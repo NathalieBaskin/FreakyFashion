@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kassan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!--HEADERLOGGA-->
+      
+        <header class="logo-container">
+          <a href="http://127.0.0.1:5501/index.html"><img src="images/LOGGA.png" alt="Freaky Fashion logotyp" class="logo" /></a>
+    
+    <!--SÖKRUTA-->
+      <div class="search-container">
+        <input type="search" placeholder="Sök produkt" class="search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <nav class="icons-container">
+          <a href=""> <i class="fa-regular fa-heart"></i></a>
+          <a href="http://127.0.0.1:5501/checkout.html">
+            <i class="fa-solid fa-shopping-cart"></i
+          ></a>
+          <a href="http://127.0.0.1:5501/admin/products/index.html">
+            <i class="fa-solid fa-lock"></i
+          ></a>
+        </nav>
+      </div>
+    </header>
+
+    <!--HEADERLÄNKAR-->
+    <nav class="headerlink">
+      <a href="http://127.0.0.1:5501/index.html">Hem</a>
+      <a href="#">Nyheter</a>
+      <a href="#">Topplistan</a>
+      <a href="http://127.0.0.1:5501/Headerlink/Rea.html">Rea</a>
+      <a href="#">Kampanjer</a>
+    </nav>
+
+    <main>
+      <!---MOBILVERSION-->
+      <section class="kassa">
+        <h1>Kassan</h1>
+
+        <div class="product-summary">
+          <ul class="product-list">
+            <li>
+              <div class="product-kassa">
+                <div class="product-info-kassa">
+                  <span>1 x Svart T-Shirt</span>
+                  <span class="unit-price">199 SEK</span>
+                </div>
+                <span class="total-price">199 SEK</span>
+              </div>
+            </li>
+            <li>
+              <div class="product-kassa">
+                <div class="product-info-kassa">
+                  <span>2 x Vit T-Shirt</span>
+                  <span class="unit-price">199 SEK</span>
+                </div>
+                <span class="total-price">398 SEK</span>
+              </div>
+            </li>
+          </ul>
+          <!--DATOR VERSION-->
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th>Produkt</th>
+                <th>Antal</th>
+                <th>Pris</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Svart T-Shirt</td>
+                <td>1</td>
+                <td>199 kr</td>
+                <td>199 kr</td>
+              </tr>
+              <tr>
+                <td>Vit T-Shirt</td>
+                <td>2</td>
+                <td>199 kr</td>
+                <td>398 kr</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--GEMENSAM-->
+        <p class="titel">Kunduppgifter</p>
+
+        <form class="kunduppgifter" action="#" method="POST">
+          <div class="name-group">
+            <div class="form-group">
+              <label for="fornamn">Förnamn</label>
+              <input type="text" id="fornamn" name="fornamn" required />
+            </div>
+
+            <div class="form-group">
+              <label for="efternamn">Efternamn</label>
+              <input type="text" id="efternamn" name="efternamn" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <fieldset>
+            <legend class="adress">Adress</legend>
+
+            <div class="address-group">
+              <div class="form-group">
+                <label for="gata">Gata</label>
+                <input type="text" id="gata" name="gata" required />
+              </div>
+
+              <div class="form-group">
+                <label for="postnummer">Postnummer</label>
+                <input type="text" id="postnummer" name="postnummer" required />
+              </div>
+
+              <div class="form-group">
+                <label for="stad">Stad</label>
+                <input type="text" id="stad" name="stad" required />
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <div class="checkbox-group">
+          <input type="checkbox" id="nyhetsbrev" name="nyhetsbrev" />
+          <label for="nyhetsbrev">Jag vill ta emot nyhetsbrev</label>
+        </div>
+        <button type="submit" class="button-kassa">Köp</button>
+      </section>
+      <!--FOOTER & ACCORDION-->
+
+      <footer>
+        <section class="accordion">
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-item-1"
+              class="accordion-checkbox"
+            />
+            <label for="accordion-item-1" class="accordion-button"
+              >Shopping</label
+            >
+            <div class="accordion-body">
+              <a href="#">Vinterjackor</a>
+              <a href="#">Pufferjackor</a>
+              <a href="#">Kappa</a>
+              <a href="#">Trenchcoats</a>
+              <a href="">Startsida</a>
+            </div>
+          </div>
+    
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-item-2"
+              class="accordion-checkbox"
+            />
+            <label for="accordion-item-2" class="accordion-button"
+              >Mina sidor</label
+            >
+            <div class="accordion-body">
+              <a href="#">Mina ordrar</a>
+              <a href="#">Mitt konto</a>
+            </div>
+          </div>
+    
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-item-3"
+              class="accordion-checkbox"
+            />
+            <label for="accordion-item-3" class="accordion-button"
+              >Kundtjänst</label
+            >
+            <div class="accordion-body">
+              <a href="#">Returnpolicy</a>
+              <a href="#">Integritetspolicy</a>
+            </div>
+          </div>
+        </section>
+        <section class="footerinfo">
+          <div class="footer-shopping">
+            <p>Shopping</p>
+            <a href="#">Vinterjackor</a>
+            <a href="#">Pufferjackor</a>
+            <a href="#">Kappa</a>
+            <a href="#">Trenchcoats</a>
+          </div>
+          <div class="minasidor">
+            <p>Mina Sidor</p>
+            <a href="#">Mina Ordrar</a>
+            <a href="#">Mitt Konto</a>
+          </div>
+          <div class="footer-kundtjanst">
+            <p>Kundtjänst</p>
+            <a href="#">Returnpolicy</a>
+            <a href="#">Integritetspolicy</a>
+          </div>
+        </section>
+        <div class="copyright">
+          <p>© Freaky Fashion.</p>
+        </div>
+      </footer>
+    </body>
+    </html>
+    <script>
+        console.log("Script.js laddades korrekt!");
+    </script>
+    

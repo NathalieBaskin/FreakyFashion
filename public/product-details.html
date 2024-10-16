@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Svart t-shirt</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+     <!--HEADERLOGGA-->
+     <header class="logo-container">
+      <a href="http://localhost:3001/"><img src="images/LOGGA.png" alt="Freaky Fashion logotyp" class="logo" /></a>
+
+<!--SÖKRUTA-->
+      <div class="search-container">
+        <input type="search" placeholder="Sök produkt" class="search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <nav class="icons-container">
+          <a href=""> <i class="fa-regular fa-heart"></i></a>
+          <a href="">
+            <i class="fa-solid fa-shopping-cart"></i
+          ></a>
+          <a href="">
+            <i class="fa-solid fa-lock"></i
+          ></a>
+        </nav>
+      </div>
+    </header>
+
+    <!--HEADERLÄNKAR-->
+    <nav class="headerlink">
+      <a href="http://localhost:3001/">Hem</a>
+      <a href="#">Nyheter</a>
+      <a href="#">Topplistan</a>
+      <a href="">Rea</a>
+      <a href="#">Kampanjer</a>
+    </nav>
+
+    <!---PRODUKTBILD-->
+    <section class="productsida-grid">
+        <article class="product-sida">
+          <img src="" alt="Produktbild" />
+        </article>
+      
+        <article class="product-details">
+          <header>
+            <h1 class="product-sida-name">Produktnamn</h1>
+            <p class="product-sida-brand">Levis</p>
+          </header>
+          <p class="lorem">Produktbeskrivning</p>
+          <p class="pris">Pris</p>
+          <div class="varukorg">
+            <a href="" class="button">Lägg i varukorg</a>
+          </div>
+        </article>
+      </section>
+<!--SLIDESHOW-->
+
+<section class="slider">
+  <h2 class="slidertext">Liknande produkter</h2>
+
+  <input type="radio" name="slider" id="slide1" checked />
+  <input type="radio" name="slider" id="slide2" />
+
+  <div class="slides">
+    <!--SLIDE 1-->
+    <div class="slide">
+      <a href="#link1"><img src="images/1.slide.png" alt="Bild 1" /></a>
+      <a href="#link2"><img src="images/2.slide.png" alt="Bild 2" /></a>
+      <a href="#link3"><img src="images/3.slide.png" alt="Bild 3" /></a>
+    </div>
+    <!--SLIDE 2-->
+    <div class="slide">
+      <a href="#link4"><img src="images/4.slide.png" alt="Bild 4" /></a>
+      <a href="#link5"><img src="images/5.slide.png" alt="Bild 5" /></a>
+      <a href="#link6"><img src="images/6.slide.png" alt="Bild 6" /></a>
+    </div>
+  </div>
+
+  <!--NAVIGERINGSKNAPPAR-->
+  <nav class="nav-container">
+    <label for="slide1" class="nav left"></label>  
+    <label for="slide2" class="nav right"></label>
+  </nav>
+</section>
+
+<!--FOOTER-->
+<footer>
+  <section class="accordion">
+    <div class="accordion-item">
+      <input
+        type="checkbox"
+        id="accordion-item-1"
+        class="accordion-checkbox"
+      />
+      <label for="accordion-item-1" class="accordion-button"
+        >Shopping</label
+      >
+      <div class="accordion-body">
+        <a href="#">Vinterjackor</a>
+        <a href="#">Pufferjackor</a>
+        <a href="#">Kappa</a>
+        <a href="#">Trenchcoats</a>
+        <a href="">Startsida</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <input
+        type="checkbox"
+        id="accordion-item-2"
+        class="accordion-checkbox"
+      />
+      <label for="accordion-item-2" class="accordion-button"
+        >Mina sidor</label
+      >
+      <div class="accordion-body">
+        <a href="#">Mina ordrar</a>
+        <a href="#">Mitt konto</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <input
+        type="checkbox"
+        id="accordion-item-3"
+        class="accordion-checkbox"
+      />
+      <label for="accordion-item-3" class="accordion-button"
+        >Kundtjänst</label
+      >
+      <div class="accordion-body">
+        <a href="#">Returnpolicy</a>
+        <a href="#">Integritetspolicy</a>
+      </div>
+    </div>
+  </section>
+  <section class="footerinfo">
+    <div class="footer-shopping">
+      <p>Shopping</p>
+      <a href="#">Vinterjackor</a>
+      <a href="#">Pufferjackor</a>
+      <a href="#">Kappa</a>
+      <a href="#">Trenchcoats</a>
+    </div>
+    <div class="minasidor">
+      <p>Mina Sidor</p>
+      <a href="#">Mina Ordrar</a>
+      <a href="#">Mitt Konto</a>
+    </div>
+    <div class="footer-kundtjanst">
+      <p>Kundtjänst</p>
+      <a href="#">Returnpolicy</a>
+      <a href="#">Integritetspolicy</a>
+    </div>
+  </section>
+  <div class="copyright">
+    <p>© Freaky Fashion.</p>
+  </div>
+</footer>
