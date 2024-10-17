@@ -87,6 +87,16 @@
 #search-button {
   display: none;
 }
+.result-info {
+  font-size: 18px; /* Justera storleken som du vill */
+  margin-bottom: 20px; /* Avstånd under meddelandet */
+  color: black; /* Färg på texten */
+  text-align: center; /* Centrera texten */
+}
+
+.sökresultat {
+  text-align: center;
+}
 
 .fa-solid.fa-magnifying-glass {
   position: absolute;
@@ -307,6 +317,9 @@
   gap: 1em;
   padding: 0.5em;
   margin-bottom: 5em;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
 }
 .product-grid i {
   position: absolute;

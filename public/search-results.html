@@ -10,35 +10,30 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <script src="search-results.js" defer></script>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
-    <!--HEADERLOGGA-->
+    <!--HEADERLOGGA--->
+
     <header class="logo-container">
-      <a href="http://localhost:3001/">
-        <img src="images/LOGGA.png" alt="Freaky Fashion logotyp" class="logo" />
-      </a>
+      <a href="http://localhost:3001/"
+        ><img src="images/LOGGA.png" alt="Freaky Fashion logotyp" class="logo"
+      /></a>
 
       <!--SÖKRUTA-->
       <div class="search-container">
-        <input
-          type="search"
-          id="search"
-          placeholder="Sök produkt"
-          class="search"
-        />
-        <button id="search-button">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
+        <input type="search" id="search" placeholder="Sök produkt" class="search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
 
-      <nav class="icons-container">
-        <a href=""><i class="fa-regular fa-heart"></i></a>
-        <a href=""><i class="fa-solid fa-shopping-cart"></i></a>
-        <a href=""><i class="fa-solid fa-lock"></i></a>
-      </nav>
-    </header>
+        <nav class="icons-container">
+            <a href=""><i class="fa-regular fa-heart"></i></a>
+            <a href=""><i class="fa-solid fa-shopping-cart"></i></a>
+            <a href=""><i class="fa-solid fa-lock"></i></a>
+        </nav>
+    </div>
+</header>
 
     <!--HEADERLÄNKAR-->
     <nav class="headerlink">
@@ -50,10 +45,14 @@
     </nav>
 
     <header>
-      <h1>Sökresultat</h1>
+      <h1 class="sökresultat">Sökresultat</h1>
     </header>
 
-    <section class="product-grid"></section>
+    <div class="results-container">
+        <div class="product-grid"></div>
+    </div>
+    
+
     <footer>
       <section class="accordion">
         <div class="accordion-item">
