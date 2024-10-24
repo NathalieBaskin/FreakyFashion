@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const products = [
         { id: 1, name: "Svart tshirt", image: "images/svart-tshirt-1.png", price: "199kr", description: "En snygg svart t-shirt från Levis." },
-        { id: 2, name: "Svart tshirt", image: "images/svart-tshirt-2.png", price: "249kr", description: "En trendig svart t-shirt från Levis." },
+        { id: 2, name: "Vit tshirt", image: "images/1.png", price: "249kr", description: "En trendig Vit t-shirt." },
         { id: 3, name: "Svart tshirt", image: "images/svart-tshirt-3.png", price: "299kr", description: "En cool svart t-shirt från Levis." },
         { id: 4, name: "Svart tshirt", image: "images/svart-tshirt-4.png", price: "199kr", description: "En snygg svart t-shirt från Levis." },
         { id: 5, name: "Svart tshirt", image: "images/svart-tshirt-5.png", price: "249kr", description: "En trendig svart t-shirt från Levis." },
