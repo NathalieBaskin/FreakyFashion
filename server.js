@@ -16,6 +16,23 @@ app.get("/product-details.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "product-details.html"));
 });
 
+// Exempeldata för produkter
+const produkter = [
+  { id: 1, name: "Svart t-shirt", image: "images/svart-tshirt-1.png", price: "199kr", brand: "Levis", description: "En snygg svart t-shirt från Levis." },
+  { id: 2, name: "Vit t-shirt", image: "images/1.png", price: "249kr", brand: "Levis", description: "En trendig vit t-shirt." },
+  { id: 3, name: "Svart t-shirt", image: "images/svart-tshirt-3.png", price: "299kr", brand: "Levis", description: "En cool svart t-shirt från Levis." },
+  { id: 4, name: "Svart t-shirt", image: "images/svart-tshirt-4.png", price: "199kr", brand: "Levis", description: "En snygg svart t-shirt från Levis." },
+  { id: 5, name: "Svart t-shirt", image: "images/svart-tshirt-5.png", price: "249kr", brand: "Levis", description: "En trendig svart t-shirt från Levis." },
+  { id: 6, name: "Svart t-shirt", image: "images/svart-tshirt-6.png", price: "299kr", brand: "Levis", description: "En cool svart t-shirt från Levis." },
+  { id: 7, name: "Svart t-shirt", image: "images/svart-tshirt-7.png", price: "249kr", brand: "Levis", description: "En trendig svart t-shirt från Levis." },
+  { id: 8, name: "Svart t-shirt", image: "images/svart-tshirt-8.png", price: "299kr", brand: "Levis", description: "En cool svart t-shirt från Levis." },
+];
+
+// API-endpoint för produkter
+app.get('/api/products', (req, res) => {
+  res.json(produkter);
+});
+
 // Exempeldata för liknande produkter
 const liknandeProdukter = [
   { id: 1, imageUrl: 'images/1.slide.png', link: '#link1' },

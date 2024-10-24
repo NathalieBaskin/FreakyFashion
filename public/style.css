@@ -317,17 +317,33 @@
   gap: 1em;
   padding: 0.5em;
   margin-bottom: 5em;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
 }
 .product-grid i {
   position: absolute;
-  bottom: 2.5em;
+  bottom: 1em;
   right: 0.6em;
   color: rgb(255, 255, 255);
   font-size: 1.7em;
   z-index: 1;
+
+}
+.heart-wrapper {
+  position: absolute;
+  bottom: 2.5em;
+  right: 0.6em;
+}
+
+.heart-wrapper i {
+  color: rgb(255, 255, 255);
+  font-size: 1.7em;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+
+.heart-wrapper:hover i {
+  transform: scale(1.2);
+  color: rgb(155, 44, 44);
+  cursor: pointer;
 }
 
 .product img {
@@ -336,6 +352,7 @@
   display: block;
 }
 
+
 .product-info {
   display: grid;
   grid-template-rows: auto auto;
@@ -343,6 +360,8 @@
   text-align: left;
   margin-top: 0.6em;
   font-size: 2rem;
+  color: black; /* Sätt färgen till svart */
+    text-decoration: none; /* Ta bort understrykning */
 }
 
 .product-name-price {
@@ -350,14 +369,25 @@
   grid-template-columns: 1fr auto;
   font-weight: bold;
   font-size: 0.8rem;
+    color: black; /* Sätt färgen till svart */
+    text-decoration: none; /* Ta bort understrykning */
+}
+  .product-name {
+    color: black; /* Sätt färgen till svart */
+    text-decoration: none; /* Ta bort understrykning */
 }
 
 .product-price {
   justify-self: end;
+  
+  color: black; /* Sätt färgen till svart */
+  text-decoration: none; /* Ta bort understrykning */
 }
 
 .product-brand {
   font-size: 0.7rem;
+  color: black; /* Sätt färgen till svart */
+  text-decoration: none; /* Ta bort understrykning */
 }
 .badge-container {
   position: relative;
@@ -400,9 +430,13 @@
 @media (min-width: 2000px) {
   .product-name-price {
     font-size: 1.5rem;
+    color: black; /* Sätt färgen till svart */
+    text-decoration: none; /* Ta bort understrykning */
   }
   .product-brand {
     font-size: 1.2rem;
+    color: black; /* Sätt färgen till svart */
+    text-decoration: none; /* Ta bort understrykning */
   }
   .product-grid i {
     bottom: 3em;

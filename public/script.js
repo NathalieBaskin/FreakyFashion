@@ -30,6 +30,38 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log("Ingen produktdata visas, produkt-ID saknas.");
   }
 
+  // Dynamiskt hämta produkter och generera HTML för produktgalleriet
+fetch('http://localhost:3000/api/products')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+          const productGrid = document.getElementById('product-grid');
+          productGrid.innerHTML = ''; // Rensa tidigare produkter
+
+          data.forEach(product => {
+              const productArticle = document.createElement('article');
+              productArticle.classList.add('product');
+              productArticle.innerHTML = `
+                  <a href="http://localhost:3000/product-details.html?id=${product.id}">
+                      <div class="badge-container">
+                          <img src="${product.image}" alt="${product.name}" />
+                          <span class="badge">${product.badge}</span>
+                          <i class="fa-solid fa-heart"></i>
+                          <div class="product-info">
+                              <div class="product-name-price">
+                                  <span class="product-name">${product.name}</span>
+                                  <span class="product-price">${product.price}kr</span>
+                              </div>
+                              <div class="product-brand">${product.brand}</div>
+                          </div>
+                      </div>
+                  </a>
+              `;
+              productGrid.appendChild(productArticle);
+          });
+      })
+      .catch(error => console.error('Det gick inte att hämta produkter:', error));
+
   fetch('http://localhost:3000/api/liknande-produkter')
       .then(response => response.json())
       .then(data => {
