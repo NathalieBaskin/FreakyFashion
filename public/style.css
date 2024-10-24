@@ -588,14 +588,14 @@
 .slider {
   position: relative;
   width: 100%;
-  overflow: hidden;
+
   margin: 0 auto;
   margin-top: 1em;
 }
 
 .slides {
   display: flex;
-  width: 200%;
+  width: 300%;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -624,17 +624,11 @@ input[type="radio"] {
   transform: translateX(0);
 }
 
+
 #slide2:checked ~ .slides {
   transform: translateX(-50%);
 }
-#slide1:checked ~ .nav-container .left {
-  cursor: not-allowed;
-  opacity: 0.2;
-}
-#slide2:checked ~ .nav-container .right {
-  cursor: not-allowed;
-  opacity: 0.2;
-}
+
 
 .nav-container {
   position: absolute;

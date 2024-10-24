@@ -61,26 +61,22 @@
         </div>
       </article>
     </section>
-    <!--SLIDESHOW-->
-
-    <!-- SLIDESHOW -->
-<section class="slider">
-  <h2 class="slidertext">Liknande produkter</h2>
-
-  <input type="radio" name="slider" id="slide1" checked />
-  <input type="radio" name="slider" id="slide2" />
-
-  <div class="slides" id="slider-slides">
-    <!-- Dynamiskt infogade slides kommer att läggas till här -->
-  </div>
-
-  <!-- NAVIGERINGSKNAPPAR -->
-  <nav class="nav-container">
-    <label for="slide1" class="nav left"></label>
-    <label for="slide2" class="nav right"></label>
-  </nav>
-</section>
-
+    <section class="slider">
+      <h2 class="slidertext">Liknande produkter</h2>
+    
+      <input type="radio" name="slider" id="slide1" checked />
+      <input type="radio" name="slider" id="slide2" />
+    
+      <div class="slides" id="slider-slides">
+        <!-- Dynamiskt infogade slides kommer att läggas till här -->
+      </div>
+    
+      <!-- NAVIGERINGSKNAPPAR -->
+      <nav class="nav-container">
+        <label for="slide1" class="nav left" onclick="prevSlide()"></label>
+        <label for="slide2" class="nav right" onclick="nextSlide()"></label>
+      </nav>
+    </section>
 
     <!--FOOTER-->
     <footer>
