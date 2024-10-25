@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administration</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <h1>Administration</h1>
+    </header>
+    <div class="sidebar-container">
+      <aside class="sidebar">
+        <h2>Produkter</h2>
+      </aside>
+
+      <!-- Main content -->
+      <main class="main-content">
+        <h2>Ny produkt</h2>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+          <!-- Namn -->
+          <div class="form-group-name">
+            <label for="name">Namn</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Ange namn"
+              required
+              maxlength="50"
+              title="Max 50 tecken."
+              class="input-field-name"
+            />
+          </div>
+
+          <!-- Beskrivning -->
+          <div class="form-group">
+            <label for="description">Beskrivning</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Ange beskrivning"
+              required
+              class="input-field textarea-fixed"
+            ></textarea>
+          </div>
+          <!--bild-->
+          <div class="form-group">
+            <label for="image-upload">Bild</label>
+            <label class="custom-file-upload">
+              <input
+                type="file"
+                id="image-upload"
+                name="image"
+                accept="image/png, image/jpeg"
+                required
+              />
+            </label>
+          </div>
+
+          <!-- SKU -->
+          <div class="form-group-sku">
+            <label for="sku">SKU</label>
+            <input
+              type="text"
+              id="sku"
+              name="sku"
+              placeholder="Ange SKU"
+              pattern="[A-Z]{3}[0-9]{3}"
+              required
+              class="input-field-sku"
+              title="Ange SKU i formatet XXXYYY."
+            />
+          </div>
+
+          <!-- Pris -->
+          <div class="form-group-pris">
+            <label for="price">Pris</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              required
+              class="input-field-pris"
+            />
+          </div>
+
+          <!-- Publiceringsdatum -->
+          <div class="form-group-datum">
+            <label for="publish-date">Publiceringsdatum</label>
+            <input
+              type="date"
+              id="publish-date"
+              name="publish-date"
+              required
+              class="input-field-datum"
+            />
+          </div>
+
+          <!-- Kategorier -->
+          <div class="form-group-kategori">
+            <legend>Kategorier</legend>
+            <div class="checkbox-group">
+              <label
+                ><input type="checkbox" name="categories" value="T-Shirts" />
+                T-Shirts</label
+              >
+              <label
+                ><input type="checkbox" name="categories" value="Sommar" />
+                Sommar</label
+              >
+              <label
+                ><input type="checkbox" name="categories" value="Byxor" />
+                Byxor</label
+              >
+              <label
+                ><input type="checkbox" name="categories" value="Skor" />
+                Skor</label
+              >
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Lägg till</button>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

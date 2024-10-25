@@ -1,0 +1,303 @@
+/*---------------------------------------GEMENSAMT----------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    background-color: #ffffff;
+  }
+  
+  .admin-header {
+    background-color: black;
+    color: white;
+    padding: 1.5em;
+    width: 100%;
+  }
+  
+  .admin-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    text-align: left;
+  }
+  
+  .sidebar-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 20%;
+    background-color: #777575;
+    color: #000000;
+    padding: 1.5em;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 1.5em;
+  }
+  
+  @media (min-width: 1024px) {
+    .admin-header h1 {
+      font-size: 2rem;
+    }
+    .sidebar h2 {
+      font-size: 2rem;
+    }
+  }
+  /*---------------------------------INDEX---------------------------*/
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+  }
+  
+  thead {
+    background-color: #333;
+    color: white;
+  }
+  
+  th,
+  td {
+    padding: 0.9em 1em;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  td a {
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  td a:hover {
+    color: #666869;
+  }
+  
+  td a.edit i,
+  td a.delete i {
+    color: #000000;
+    font-size: 1em;
+  }
+  
+  td a.edit:hover i,
+  td a.delete:hover i {
+    transform: scale(1.2);
+    transition: 0.2s ease-in-out;
+  }
+  .btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1em 2em;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  
+  .btn:hover {
+    background-color: #c1c3c4;
+  }
+  
+  @media (min-width: 1024px) {
+    .main-content h1 {
+    font-size: 1.5rem;
+    }
+  }
+  @media (min-width: 2000px) {
+    .main-content h1 {
+    font-size: 2rem;
+    }
+  }
+  
+  /*----------------------------------NY PRODUKT-----------------------*/
+  
+  .form-group-name {
+    margin-bottom: 2em;
+    margin-top: 2em;
+  }
+  
+  .form-group-name label {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .input-field-name {
+    width: 30%;
+    padding: 1em;
+    font-size: 1rem;
+    border: 2px solid #000000;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5em;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .input-field {
+    width: 40%;
+    padding: 1em;
+    font-size: 1rem;
+    border: 2px solid #000000;
+  }
+  
+  .form-group-sku {
+    margin-top: 0.8em;
+    margin-bottom: 1.5em;
+  }
+  
+  .form-group-sku label {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .input-field-sku {
+    width: 30%;
+    padding: 1em;
+    font-size: 1rem;
+    border: 2px solid #000000;
+  }
+  
+  .form-group-pris {
+    margin-bottom: 1.5em;
+  }
+  
+  .form-group-pris label {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .input-field-pris {
+    width: 30%;
+    padding: 1em;
+    font-size: 1rem;
+    border: 2px solid #000000;
+  }
+  
+  .form-group-datum {
+    margin-bottom: 1.5em;
+  }
+  
+  .form-group-datum label {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .input-field-datum {
+    width: 25%;
+    padding: 1em;
+    font-size: 1rem;
+    border: 2px solid #000000;
+  }
+  
+  .form-group-kategori {
+    display: block;
+    margin-bottom: 0.3em;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .textarea-fixed {
+    height: 200px;
+    resize: none;
+  }
+  
+  .custom-file-upload {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .custom-file-upload input[type="file"] {
+    display: none;
+  }
+  
+  .custom-file-upload::before {
+    content: "Välj fil";
+    display: inline-block;
+    padding: 0.8em 2em;
+    background-color: #000000;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  .custom-file-upload:hover::before {
+    background-color: #555;
+  }
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.8em;
+  }
+  
+  .checkbox-group label {
+    margin-bottom: 0.8em;
+    font-size: 1.3rem;
+    font-weight: lighter;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: 1.5em;
+    height: 1.8em;
+    transform: scale(1.5);
+    margin-right: 0.8em;
+  }
+  
+  .submit-btn {
+    padding: 1em 2em;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  .submit-btn:hover {
+    background-color: #555;
+  }
+  
+  
+  
+  
