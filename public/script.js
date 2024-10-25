@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const productElement = document.createElement('article');
                 productElement.classList.add('product');
                 productElement.innerHTML = `
-                    <a href="index.html?id=${product.id}">
+                    <a href="product-details.html?id=${product.id}">
                         <img src="${product.image}" alt="${product.name}" />
                     </a>
                     <div class="heart-wrapper">
