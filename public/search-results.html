@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="sv">
   <head>
@@ -11,8 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+
     <script src="script.js" defer></script>
-    <script src="search-results.js" defer></script>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   </head>
 
@@ -26,16 +24,21 @@
 
       <!--SÖKRUTA-->
       <div class="search-container">
-        <input type="search" id="search" placeholder="Sök produkt" class="search" />
+        <input
+          type="search"
+          id="search"
+          placeholder="Sök produkt"
+          class="search"
+        />
         <i class="fa-solid fa-magnifying-glass"></i>
 
         <nav class="icons-container">
-            <a href=""><i class="fa-regular fa-heart"></i></a>
-            <a href=""><i class="fa-solid fa-shopping-cart"></i></a>
-            <a href=""><i class="fa-solid fa-lock"></i></a>
+          <a href=""><i class="fa-regular fa-heart"></i></a>
+          <a href=""><i class="fa-solid fa-shopping-cart"></i></a>
+          <a href=""><i class="fa-solid fa-lock"></i></a>
         </nav>
-    </div>
-</header>
+      </div>
+    </header>
 
     <!--HEADERLÄNKAR-->
     <nav class="headerlink">
@@ -51,9 +54,8 @@
     </header>
 
     <div class="results-container">
-        <div class="product-grid"></div>
+      <div class="product-grid"></div>
     </div>
-    
 
     <footer>
       <section class="accordion">
@@ -128,116 +130,6 @@
         <p>© Freaky Fashion.</p>
       </div>
     </footer>
-    <script>
-      // Din array med produkter
-      const products = [
-        {
-          id: 1,
-          name: "Svart t-shirt",
-          image: "images/svart-tshirt-1.png",
-          price: "199kr",
-          description: "En snygg svart t-shirt från Levis.",
-        },
-        {
-          id: 2,
-          name: "Vit t-shirt",
-          image: "images/svart-tshirt-2.png",
-          price: "299kr",
-          description: "En trendig Vit t-shirt.",
-        },
-        {
-          id: 3,
-          name: "Röd t-shirt",
-          image: "images/2.png",
-          price: "599kr",
-          description: "En cool Röd t-shirt från Thrasher.",
-        },
-        {
-          id: 4,
-          name: "Vit t-shirt",
-          image: "images/3.png",
-          price: "399kr",
-          description: "En snygg Vit-shirt från Adidas.",
-        },
-        {
-          id: 5,
-          name: "Svart t-shirt",
-          image: "images/svart-tshirt-5.png",
-          price: "249kr",
-          description: "En trendig svart t-shirt från Levis.",
-        },
-        {
-          id: 6,
-          name: "Svart t-shirt",
-          image: "images/svart-tshirt-6.png",
-          price: "299kr",
-          description: "En cool svart t-shirt från Levis.",
-        },
-        {
-          id: 7,
-          name: "Svart t-shirt",
-          image: "images/svart-tshirt-7.png",
-          price: "249kr",
-          description: "En trendig svart t-shirt från Levis.",
-        },
-        {
-          id: 8,
-          name: "Svart t-shirt",
-          image: "images/svart-tshirt-8.png",
-          price: "299kr",
-          description: "En cool svart t-shirt från Levis.",
-        },
-        {
-          id: 9,
-          name: "Svart t-shirt",
-          image: "images/svart-tshirt-9.png",
-          price: "299kr",
-          description: "En cool svart t-shirt från Levis.",
-        },
-    
-      ];
-
-      // Hämta söktermen från URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const searchTerm = urlParams.get("q");
-
-      // Filtrera produkterna baserat på söktermen
-      const filteredProducts = products.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-
-      // Visa sökresultaten
-      const productGrid = document.querySelector(".product-grid");
-
-      if (filteredProducts.length > 0) {
-        filteredProducts.forEach((product) => {
-          const productElement = document.createElement("article");
-          productElement.classList.add("product");
-          productElement.innerHTML = (
-            <a href="product-details.html?id=${product.id}">
-              <img src="${product.image}" alt="${product.name}" />
-              <h2>${product.name}</h2>
-              <p>${product.price}</p>
-            </a>
-          );
-          productGrid.appendChild(productElement);
-        });
-      } else {
-        productGrid.innerHTML = "<p>Inga produkter hittades.</p>";
-      }
-
-      // Lägg till event listener för sökfältet
-      const searchField = document.getElementById("search");
-      searchField.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-          const searchTerm = searchField.value;
-          if (searchTerm) {
-            window.location.href = `search-results.html?q=${encodeURIComponent(
-              searchTerm
-            )}`;
-          }
-        }
-      });
-    </script>
+   
   </body>
 </html>

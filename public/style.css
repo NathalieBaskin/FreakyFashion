@@ -104,11 +104,24 @@
   color: #000000;
   font-size: 1em;
 }
-
+#search-button {
+  display: none; /* Döljer knappen som standard */
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border: 2px solid #000000;
+  border-radius: 2em;
+  background-color: #fff; /* Bakgrundsfärg för knappen */
+  cursor: pointer;
+}
 /*-----IPAD----*/
 @media (min-width: 641px) {
   .search {
     width: 50%;
+  }
+}
+@media (max-width: 1023px) {
+      #search-button {
+        display: inline-block; /* Visar knappen på skärmar under 1024px */
   }
 }
 @media (min-width: 2000px) {

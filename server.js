@@ -3,18 +3,7 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Servera statiska filer från public-mappen
 app.use(express.static(path.join(__dirname, "public")));
-
-// Route för startsidan
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// Route för produktdetaljer-sidan
-app.get("/product-details.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "product-details.html"));
-});
 
 // Exempeldata för produkter
 const produkter = [
@@ -47,7 +36,7 @@ const produkter = [
     name: "Vit t-shirt",
     image: "images/3.png",
     price: "399kr",
-    brand: "Adias",
+    brand: "Adidas",
     description: "En snygg Vit t-shirt från Adidas.",
   },
   {
@@ -95,6 +84,15 @@ const produkter = [
 // API-endpoint för liknande produkter
 app.get("/api/liknande-produkter", (req, res) => {
   res.json(produkter);
+});
+
+// Standard sidor
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("/product-details.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "product-details.html"));
 });
 
 // Starta servern
