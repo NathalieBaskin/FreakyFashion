@@ -305,6 +305,7 @@
   }
 }
 /*----------------------------------------------PRODUKTBILDER-------------------------------------------*/
+
 .product {
   flex: 1 1 calc(25% - 20px);
   max-width: calc(25% - 20px);
@@ -584,55 +585,56 @@
   font-size: 1.8rem;
   font-weight: bold;
 }
-
 .slider {
   position: relative;
   width: 100%;
-
+  overflow: hidden;
   margin: 0 auto;
-  margin-top: 1em;
 }
 
 .slides {
   display: flex;
-  width: 300%;
   transition: transform 0.5s ease-in-out;
+  width: 300%; /* Ändra till 300% om varje slide ska visa tre bilder */
 }
 
 .slide {
-  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 0.8em;
+  gap: 1em;
+  flex: 0 0 33.33%; /* Varje slide tar upp en tredjedel av bredden */
 }
+
 
 .slide a {
-  text-decoration: none;
+  flex: 1 1 300px; /* Första talet anger hur mycket de ska växa */
+  max-width: 300px; /* Sätt en maxbredd som passar */
 }
-
 .slide a img {
+  
   width: 100%;
   height: auto;
-  margin: 0 auto;
+  object-fit: contain;
 }
+
+
 
 input[type="radio"] {
   display: none;
 }
 
+/* Navigering och animation */
 #slide1:checked ~ .slides {
   transform: translateX(0);
 }
 
-
 #slide2:checked ~ .slides {
-  transform: translateX(-50%);
+  transform: translateX(-100%); /* Använd -100% för att flytta till nästa slide */
 }
-
 
 .nav-container {
   position: absolute;
-  top: 60%;
+  top: 50%; /* Centrera navigeringen vertikalt */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -662,24 +664,19 @@ input[type="radio"] {
   background-color: rgba(255, 255, 255, 1);
 }
 
-#slide1:checked ~ .nav-container .right {
-  content: ">";
-}
-
-#slide2:checked ~ .nav-container .left {
-  content: "<";
-}
-
+/* Responsiv design */
 @media (max-width: 640px) {
   .slider {
     display: none;
   }
 }
+
 @media (min-width: 2000px) {
   .slider h2 {
     font-size: 3rem;
   }
 }
+
 .slider {
   margin-bottom: 4em;
 }
