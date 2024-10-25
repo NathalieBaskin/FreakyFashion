@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody id="product-table-body">
-            <!-- Här kommer produkterna att läggas till -->
+            <!-- Produkter kommer att laddas här -->
           </tbody>
         </table>
       </main>
@@ -43,7 +43,7 @@
 
     <script>
       document.getElementById("load-products").addEventListener("click", () => {
-        fetch("/api/products")
+        fetch("/admin/api/products")
           .then((response) => response.json())
           .then((data) => {
             const tbody = document.getElementById("product-table-body");

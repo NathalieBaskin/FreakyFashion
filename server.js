@@ -1,14 +1,10 @@
 const express = require("express");
-const path = require("path");
 const bodyParser = require("body-parser"); // Importera body-parser
+const path = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
-
-// Middleware för att hantera JSON och URL-encoded data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Exempeldata för produkter
 const produkter = [
@@ -86,6 +82,20 @@ const produkter = [
   },
 ];
 
+// API-endpoint för liknande produkter
+app.get("/api/liknande-produkter", (req, res) => {
+  res.json(produkter);
+});
+
+// Standard sidor
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("/product-details.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "product-details.html"));
+});
+
 // GET-rutt för att hämta produkter
 app.get("/api/products", (req, res) => {
   res.json(produkter);
@@ -122,8 +132,13 @@ app.get("/admin/products/new", (req, res) => {
 });
 
 // Rutt för att visa produktredigering
-app.get("/admin/products/edit/:id", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "admin", "products", "edit.html")); // Se till att denna fil finns
+app.get("/admin/products/new/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admin", "products", "new.html")); // Se till att denna fil finns
+});
+
+// GET-rutt för att hämta produkter för administration
+app.get("/admin/api/products", (req, res) => {
+  res.json(produkter);
 });
 
 // Starta servern
