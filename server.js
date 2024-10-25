@@ -1,9 +1,14 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser"); // Importera body-parser
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
+
+// Middleware för att hantera JSON och URL-encoded data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Exempeldata för produkter
 const produkter = [
@@ -81,18 +86,44 @@ const produkter = [
   },
 ];
 
-// API-endpoint för liknande produkter
-app.get("/api/liknande-produkter", (req, res) => {
+// GET-rutt för att hämta produkter
+app.get("/api/products", (req, res) => {
   res.json(produkter);
 });
 
-// Standard sidor
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+// DELETE-rutt för att ta bort en produkt
+app.delete("/api/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const index = produkter.findIndex(product => product.id === productId);
+
+  if (index !== -1) {
+    produkter.splice(index, 1);
+    return res.status(200).json({ message: "Produkt borttagen." });
+  } else {
+    return res.status(404).json({ message: "Produkt hittades inte." });
+  }
 });
 
-app.get("/product-details.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "product-details.html"));
+// GET-rutt för att hämta en specifik produkt för redigering
+app.get("/api/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const product = produkter.find(product => product.id === productId);
+
+  if (product) {
+    return res.json(product);
+  } else {
+    return res.status(404).json({ message: "Produkt hittades inte." });
+  }
+});
+
+// Ny produkt sida
+app.get("/admin/products/new", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admin", "products", "new.html"));
+});
+
+// Rutt för att visa produktredigering
+app.get("/admin/products/edit/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admin", "products", "edit.html")); // Se till att denna fil finns
 });
 
 // Starta servern
