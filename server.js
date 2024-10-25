@@ -114,6 +114,7 @@ app.delete("/api/products/:id", (req, res) => {
   }
 });
 
+
 // GET-rutt för att hämta en specifik produkt för redigering
 app.get("/api/products/:id", (req, res) => {
   const productId = parseInt(req.params.id);
@@ -131,9 +132,18 @@ app.get("/admin/products/new", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "admin", "products", "new.html"));
 });
 
-// Rutt för att visa produktredigering
-app.get("/admin/products/new/:id", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "admin", "products", "new.html")); // Se till att denna fil finns
+// PUT-rutt för att uppdatera en produkt
+app.put("/api/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const index = produkter.findIndex(product => product.id === productId);
+
+  if (index !== -1) {
+    const updatedProduct = req.body;
+    produkter[index] = { ...produkter[index], ...updatedProduct }; // Uppdatera produktens information
+    return res.status(200).json({ message: "Produkt uppdaterad.", product: produkter[index] });
+  } else {
+    return res.status(404).json({ message: "Produkt hittades inte." });
+  }
 });
 
 // GET-rutt för att hämta produkter för administration

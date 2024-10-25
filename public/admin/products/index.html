@@ -1,116 +1,123 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administration</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="admin.css" />
-  </head>
-  <body>
+</head>
+<body>
     <header class="admin-header">
-      <h1>Administration</h1>
+        <h1>Administration</h1>
     </header>
     <div class="sidebar-container">
-      <aside class="sidebar">
-        <h2>Produkter</h2>
-      </aside>
+        <aside class="sidebar">
+            <h2>Produkter</h2>
+        </aside>
 
-      <main class="main-content">
-        <div class="header-row">
-          <h1>Produkter</h1>
-          <button id="load-products" class="btn">Ladda produkter</button>
-          <a href="/admin/products/new" class="btn">Ny produkt</a>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Namn</th>
-              <th>SKU</th>
-              <th>Pris</th>
-              <th>Åtgärder</th>
-            </tr>
-          </thead>
-          <tbody id="product-table-body">
-            <!-- Produkter kommer att laddas här -->
-          </tbody>
-        </table>
-      </main>
+        <main class="main-content">
+            <div class="header-row">
+                <h1>Produkter</h1>
+                <button id="load-products" class="btn">Ladda produkter</button>
+                <a href="/admin/products/new" class="btn">Ny produkt</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Namn</th>
+                        <th>SKU</th>
+                        <th>Pris</th>
+                        <th>Åtgärder</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body">
+                    <!-- Produkter kommer att laddas här -->
+                </tbody>
+            </table>
+        </main>
     </div>
 
     <script>
-      document.getElementById("load-products").addEventListener("click", () => {
-        fetch("/admin/api/products")
-          .then((response) => response.json())
-          .then((data) => {
-            const tbody = document.getElementById("product-table-body");
-            tbody.innerHTML = ""; // Rensa tidigare data
-
-            data.forEach((product) => {
-              const row = document.createElement("tr");
-              row.innerHTML = `
-                <td>${product.name}</td>
-                <td>${product.sku}</td>
-                <td>${product.price}</td>
-                <td>
-                  <a href="#" class="edit" data-id="${product.id}"><i class="fa-solid fa-pen-to-square"></i></a>
-                  <a href="#" class="delete" data-id="${product.id}"><i class="fa-solid fa-trash"></i></a>
-                </td>
-              `;
-              tbody.appendChild(row); // Lägg till raden i tabellen
+        document.getElementById("load-products").addEventListener("click", loadProducts);
+    
+        function loadProducts() {
+            fetch("/admin/api/products")
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    const tbody = document.getElementById("product-table-body");
+                    tbody.innerHTML = ""; // Rensa tidigare data
+    
+                    data.forEach((product) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${product.name}</td>
+                            <td>${product.sku || "Ingen SKU"}</td>
+                            <td>${product.price}</td>
+                            <td>
+                                <a href="#" class="edit" data-id="${product.id}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="#" class="delete" data-id="${product.id}"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        `;
+                        tbody.appendChild(row); // Lägg till raden i tabellen
+                    });
+    
+                    // Lägg till händelsehanterare för redigera och ta bort
+                    addEventListeners(); // Se till att denna rad kommer efter att rader har lagts till
+                })
+                .catch((error) => {
+                    console.error("Fel vid hämtning av produkter:", error);
+                });
+        }
+    
+        function addEventListeners() {
+            const deleteButtons = document.querySelectorAll(".delete");
+            deleteButtons.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const productId = button.getAttribute("data-id");
+                    deleteProduct(productId);
+                });
             });
-
-            // Lägg till händelsehanterare för redigera och ta bort
-            addEventListeners();
-          })
-          .catch((error) => {
-            console.error("Fel vid hämtning av produkter:", error);
-          });
-      });
-
-      function addEventListeners() {
-        const deleteButtons = document.querySelectorAll(".delete");
-        deleteButtons.forEach((button) => {
-          button.addEventListener("click", (e) => {
-            e.preventDefault();
-            const productId = button.getAttribute("data-id");
-            deleteProduct(productId);
-          });
-        });
-
-        const editButtons = document.querySelectorAll(".edit");
-        editButtons.forEach((button) => {
-          button.addEventListener("click", (e) => {
-            e.preventDefault();
-            const productId = button.getAttribute("data-id");
-            editProduct(productId);
-          });
-        });
-      }
-
-      function deleteProduct(id) {
-        fetch(`/api/products/${id}`, {
-          method: "DELETE",
-        })
-          .then((response) => {
-            if (response.ok) {
-              console.log(`Produkt med ID ${id} har tagits bort.`);
-              document.getElementById("load-products").click(); // Ladda om produkterna
-            } else {
-              console.error("Fel vid borttagning av produkt.");
-            }
-          })
-          .catch((error) => {
-            console.error("Fel vid nätverksanrop:", error);
-          });
-      }
-
-      function editProduct(id) {
-        window.location.href = `/admin/products/edit/${id}`; // Justera sökvägen till din redigeringssida
-      }
+    
+            const editButtons = document.querySelectorAll(".edit");
+            editButtons.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const productId = button.getAttribute("data-id");
+                    editProduct(productId);
+                });
+            });
+        }
+    
+        function deleteProduct(id) {
+            fetch(`/api/products/${id}`, {
+                method: "DELETE",
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(`Produkt med ID ${id} har tagits bort.`);
+                        loadProducts(); // Ladda om produkterna direkt efter borttagning
+                    } else {
+                        console.error("Fel vid borttagning av produkt.");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Fel vid nätverksanrop:", error);
+                });
+        }
+    
+        function editProduct(id) {
+            window.location.href = `/admin/products/edit/${id}`; // Justera sökvägen till din redigeringssida
+        }
     </script>
-  </body>
+    
+    
+    
+</body>
 </html>
