@@ -403,21 +403,22 @@
   color: black; /* Sätt färgen till svart */
   text-decoration: none; /* Ta bort understrykning */
 }
-.badge-container {
+.image-wrapper {
   position: relative;
   width: 100%;
 }
 
 .badge {
   position: absolute;
-  top: 0.5em;
-  left: 0.3em;
-  background-color: black;
+  top: 0.5em; /* Justera om du vill ha den längre ner eller högre */
+  left: 0.3em; /* Justera för att flytta den åt vänster eller höger */
+  background-color: black; /* Kan ändras till en annan färg om du vill */
   color: white;
   padding: 0.2em 0.5em;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1rem; /* Justerat till 1rem för mindre text */
 }
+
 /*-----MOBIL----*/
 @media (max-width: 640px) {
   .product {
