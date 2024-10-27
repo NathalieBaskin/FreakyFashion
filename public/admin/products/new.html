@@ -192,7 +192,8 @@
                   // Gå till produktdetaljsidan för den nya produkten
                   window.location.href = `http://localhost:3000/product-details.html?id=${newProductId}`;
               } else {
-                  console.error("Kunde inte lägga till produkten");
+                  const errorData = await response.json(); // Hämta felmeddelande från servern
+                  console.error("Kunde inte lägga till produkten: " + errorData.message);
               }
           } catch (error) {
               console.error("Fel vid skapande av produkt:", error);

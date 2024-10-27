@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
 </head>
 
 <body>
@@ -70,6 +71,7 @@
 
   <!--PRODUKTBILDER-->
   <section class="product-grid">
+
     <!-- Här kommer produktkort att genereras dynamiskt -->
   </section>
 
@@ -146,50 +148,45 @@
       <p>© Freaky Fashion.</p>
     </div>
   </footer>
-
-<script>
-fetch('/api/liknande-produkter')
-  .then(response => response.json())
-  .then(produkter => {
-    console.log('Produkter hämtade:', produkter); // Loggar produkterna
-    const productGrid = document.querySelector('.product-grid');
-    const shuffledProducts = produkter.sort(() => 0.5 - Math.random()).slice(0, 8);
-    const isIndexPage = window.location.pathname.endsWith('index.html');
-
-    shuffledProducts.forEach(produkt => {
-      const publishDate = new Date(produkt.publishDate);
-      const isNew = (new Date() - publishDate) <= 7 * 24 * 60 * 60 * 1000; // Kolla om produkten är max 7 dagar gammal
-
-      const productCard = document.createElement('article');
-      productCard.classList.add('product');
-      productCard.innerHTML = `
-        <a href="http://localhost:3000/product-details.html?id=${produkt.id}">
-          <div class="image-wrapper">
-            <img src="${produkt.image}" alt="${produkt.name}" />
-            ${isIndexPage && isNew ? '<span class="badge">Nyhet</span>' : ''}
-          </div>
-        </a>
-        <div class="heart-wrapper">
-          <i class="fa-solid fa-heart"></i>
-        </div>
-        <div class="product-info">
-          <div class="product-name-price">
-            <span class="product-name">${produkt.name}</span>
-            <span class="product-price">${produkt.price}</span>
-          </div>
-          <div class="product-brand">${produkt.brand}</div>
-        </div>
-      `;
-      productGrid.appendChild(productCard);
-
-      // Logga om badgen läggs till
-      console.log('Är produkten ny?', isNew);
-    });
-  })
-  .catch(error => console.error('Error:', error));
-
-</script>
-
+  <script>
+    fetch('/api/liknande-produkter')
+      .then(response => response.json())
+      .then(produkter => {
+        console.log('Produkter hämtade:', produkter); // Loggar produkterna
+        const productGrid = document.querySelector('.product-grid');
+        const shuffledProducts = produkter.sort(() => 0.5 - Math.random()).slice(0, 8);
+        const today = new Date(); // Hämta dagens datum
+  
+        shuffledProducts.forEach(produkt => {
+          const publishDate = new Date(produkt.publishDate);
+          const isNew = (today - publishDate) <= 7 * 24 * 60 * 60 * 1000; // Kolla om produkten är max 7 dagar gammal
+  
+          const productCard = document.createElement('article');
+          productCard.classList.add('product');
+          productCard.innerHTML = `
+            <a href="http://localhost:3000/product-details.html?id=${produkt.id}">
+              <div class="image-wrapper">
+                <img src="${produkt.image}" alt="${produkt.name}" />
+                ${isNew ? '<span class="badge">Nyhet!</span>' : ''} <!-- Badgen läggs till här -->
+              </div>
+            </a>
+            <div class="heart-wrapper">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name-price">
+                <span class="product-name">${produkt.name}</span>
+                <span class="product-price">${produkt.price}</span>
+              </div>
+              <div class="product-brand">${produkt.brand}</div>
+            </div>
+          `;
+          productGrid.appendChild(productCard);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+  
 
 </body>
 </html>

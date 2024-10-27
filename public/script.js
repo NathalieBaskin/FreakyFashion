@@ -15,17 +15,38 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 9, name: "Svart t-shirt", image: "images/svart-tshirt-9.png", price: "299kr", brand: "Levis", description: "En cool svart t-shirt från Levis.", publishDate: '2024-10-12' },
         { id: 10, name: "Gul t-shirt", image: "images/4.png", price: "299kr", brand: "Levis", description: "En snygg gul t-shirt från Levis.", publishDate: '2024-10-27' },
         { id: 11, name: "Vit tank-top", image: "images/6.png", price: "199kr", brand: "Motörhead", description: "Cool motörhead topp.", publishDate: '2024-10-27' },
+        { id: 12, name: "Vit t-shirt", image: "images/7.png", price: "399kr", brand: "Levis", description: "Cool t-shirt med tryck.", publishDate: '2024-10-27' },
     ];
 
-    // Log the retrieved parameters for debugging
-    console.log("Product ID:", productId);
-    console.log("Search Term:", searchTerm);
+    const today = new Date();
+    const productGrid = document.querySelector('.product-grid');
 
-    // Display product details based on product ID
+    // Lägg till badge på existerande produkter
+    if (productGrid) {
+        const productElements = productGrid.querySelectorAll('.product');
+        
+        productElements.forEach((productElement, index) => {
+            const product = products[index]; // Anta att indexen matchar produkterna
+
+            // Beräkna om produkten är ny
+            const publishDate = new Date(product.publishDate);
+            const daysSincePublished = (today - publishDate) / (1000 * 60 * 60 * 24);
+            const isNew = daysSincePublished <= 7;
+
+            // Om produkten är ny, lägg till badgen
+            if (isNew) {
+                const badge = document.createElement('div');
+                badge.classList.add('badge');
+                badge.textContent = 'Nyhet!';
+                productElement.querySelector('a').appendChild(badge);
+            }
+        });
+    }
+
+    // Hantera produktdetaljer baserat på produkt-ID
     if (productId) {
         const product = products.find(p => p.id == productId);
         if (product) {
-            console.log("Product found:", product);
             document.title = product.name;
             document.querySelector(".product-sida-name").textContent = product.name;
             document.querySelector(".product-sida-brand").textContent = product.brand;
@@ -34,42 +55,43 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector(".product-sida img").src = product.image;
             document.querySelector(".product-sida img").alt = product.name;
         } else {
-            console.error("Product not found for ID:", productId);
+            console.error("Produkt inte hittad för ID:", productId);
             document.querySelector("body").innerHTML = "<h1>Produkten hittades inte!</h1>";
         }
     } else if (searchTerm) {
-        console.log("Searching for products with term:", searchTerm);
+        console.log("Söker efter produkter med termen:", searchTerm);
         const filteredProducts = products.filter(product =>
             product.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
-
-        const productGrid = document.querySelector('.product-grid');
-        if (!productGrid) {
-            console.error("Produktgridden kunde inte hittas.");
-            return;
-        }
-
-        productGrid.innerHTML = ''; // Clear previous results
-
-        // Create and display result info
+    
+        // Generera och visa resultat
         const resultInfo = document.createElement('p');
         resultInfo.classList.add('result-info');
         resultInfo.textContent = `Hittade ${filteredProducts.length} produkter`;
         productGrid.parentNode.insertBefore(resultInfo, productGrid);
-
-        // Generate product HTML if products found
+    
+        // Skapa produkt HTML om produkter hittas
         if (filteredProducts.length > 0) {
             filteredProducts.forEach(product => {
                 const productElement = document.createElement('article');
                 productElement.classList.add('product');
+    
+                // Beräkna om produkten är ny
+                const publishDate = new Date(product.publishDate);
+                const today = new Date();
+                const daysSincePublished = (today - publishDate) / (1000 * 60 * 60 * 24);
+                const isNew = daysSincePublished <= 7;
+    
+                // Lägg till produktens HTML
                 productElement.innerHTML = `
                     <a href="product-details.html?id=${product.id}">
-                        <img src="${product.image}" alt="${product.name}" />
+                        <div class="image-wrapper">
+                            <img src="${product.image}" alt="${product.name}" />
+                            ${isNew ? '<div class="badge">Nyhet!</div>' : ''}
+                        </div>
                     </a>
                     <div class="heart-wrapper">
-                        <a href="#">
-                            <i class="fa-solid fa-heart"></i>
-                        </a>
+                        <i class="fa-solid fa-heart"></i>
                     </div>
                     <div class="product-info">
                         <div class="product-name-price">
@@ -82,20 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 productGrid.appendChild(productElement);
             });
         } else {
-            console.log("No products found for search term:", searchTerm);
+            console.log("Inga produkter hittades.");
             productGrid.innerHTML = '<p>Inga produkter hittades.</p>';
         }
-    } else {
-        console.log("Ingen produktdata visas, produkt-ID och sökterm saknas.");
     }
+    
 
-    // Search when Enter key is pressed
+    // Sök när Enter-tangenten trycks
     const searchInput = document.getElementById("search");
     if (searchInput) {
         searchInput.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 const searchTerm = searchInput.value.trim();
-                console.log("Search initiated for term:", searchTerm);
                 window.location.href = `search-results.html?q=${encodeURIComponent(searchTerm)}`;
             }
         });

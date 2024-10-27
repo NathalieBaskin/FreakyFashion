@@ -29,12 +29,14 @@ const produkter = [
   { id: 9, name: "Svart t-shirt", image: "images/svart-tshirt-9.png", price: "299kr", brand: "Levis", description: "En cool svart t-shirt från Levis.", publishDate: '2024-10-12' },
   { id: 10, name: "Gul t-shirt", image: "images/4.png", price: "299kr", brand: "Levis", description: "En snygg gul t-shirt från Levis.", publishDate: '2024-10-27' },
   { id: 11, name: "Vit tank-top", image: "images/6.png", price: "199kr", brand: "Motörhead", description: "Cool motörhead topp.", publishDate: '2024-10-27' },
+  { id: 12, name: "Vit t-shirt", image: "images/7.png", price: "399kr", brand: "Levis", description: "Cool t-shirt med tryc.", publishDate: '2024-10-27' },
 ];
 
 // API-endpoint för liknande produkter
 app.get("/api/liknande-produkter", (req, res) => {
-  res.json(produkter); // Använd rätt variabelnamn här
+  res.json(produkter); // Se till att 'produkter' är korrekt definierat
 });
+
 
 // Standard sidor
 app.get("/", (req, res) => {

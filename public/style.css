@@ -409,15 +409,17 @@
 }
 
 .badge {
-  position: absolute;
-  top: 0.5em; /* Justera om du vill ha den längre ner eller högre */
-  left: 0.3em; /* Justera för att flytta den åt vänster eller höger */
-  background-color: black; /* Kan ändras till en annan färg om du vill */
-  color: white;
-  padding: 0.2em 0.5em;
-  border-radius: 5px;
-  font-size: 1rem; /* Justerat till 1rem för mindre text */
+  position: absolute; /* Gör att den kan placeras ovanpå bilden */
+  top: 10px;
+  left: 10px;
+  background-color: rgb(0, 0, 0); /* Färg för badgen */
+  color: white; /* Textfärg */
+  padding: 5px; /* Avstånd inuti badgen */
+  border-radius: 5px; /* Rundade hörn */
+  font-size: 14px; /* Teckenstorlek */
+  z-index: 10; /* Se till att den är ovanpå andra element */
 }
+
 
 /*-----MOBIL----*/
 @media (max-width: 640px) {
@@ -468,7 +470,9 @@
 
 .product-sida {
   position: relative;
+  width: 100%; /* Se till att den tar upp hela bredden */
 }
+
 .product-sida img {
   width: 100%;
   height: auto;
@@ -476,10 +480,10 @@
 }
 
 .product-sida .fa-heart {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-  font-size: 2em;
+  position: absolute; /* Placerar hjärtat relativt produktbilden */
+  bottom: 3%; /* Justera detta värde för att flytta hjärtat upp eller ner */
+  left: 90%; /* Justera detta värde för att flytta hjärtat vänster eller höger */
+  font-size: 2em; /* Ändra storlek om nödvändigt */
   color: rgb(255, 255, 255);
   z-index: 1;
   transition: transform 0.3s ease;
@@ -509,6 +513,7 @@
   font-size: 1rem;
   text-align: left;
 }
+
 .button {
   display: inline-block;
   padding: 0.8em 1em;
@@ -534,6 +539,7 @@
     margin-right: 10%;
   }
 }
+
 /*-----IPAD----*/
 @media (min-width: 641px) {
   .productsida-grid {
